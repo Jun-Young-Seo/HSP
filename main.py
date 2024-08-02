@@ -5,9 +5,47 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
+import pymysql
+
+def upload_db(data):
+    connection = pymysql.connect(
+        host='localhost',
+        user='root',
+        password='ssik123',
+        db='hsp_db',
+        charset='utf8'
+    )
+    count = 0
+    try:
+        with connection.cursor() as cursor:
+            # 새로운 데이터 삽입
+            for item in data:
+                insert_query = """
+                INSERT INTO VOLUNTEER_INFO (CONTENT, RECRUTING_START, RECRUTING_END, 
+                                            VOLUNTEERING_START_DATE, VOLUNTEERING_END_DATE, 
+                                            VOLUNTERRING_START_TIME, VOLUNTEERING_END_TIME, 
+                                            REGION, AGENCY)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                """
+                cursor.execute(insert_query, (
+                    item['내용'],
+                    item['모집 시작 날짜'],
+                    item['모집 종료 날짜'],
+                    item['봉사 시작 날짜'],
+                    item['봉사 종료 날짜'],
+                    item['봉사 시작 시간'],
+                    item['봉사 종료 시간'],
+                    item['지역'],
+                    item['기관']
+                ))
+                count+=1
+                print(count,'번 째 data : ',data)
+        connection.commit()
+    finally:
+        connection.close()
 
 
-def crawl_1365_with_selenium():
+def crawling_1365():
     url = 'https://www.1365.go.kr/vols/1572247904127/partcptn/timeCptn.do'
     driver = webdriver.Chrome()
     driver.get(url)
@@ -36,19 +74,18 @@ def crawl_1365_with_selenium():
                 agency = result[agency_idx + 1]
 
                 all_data.append({
-                    'content': content,
-                    'recruiting_start_date': recruiting_dates[0],
-                    'recruiting_end_date': recruiting_dates[2],
-                    'volunteer_start_date': volunteer_dates[0],
-                    'volunteer_end_date': volunteer_dates[2],
-                    'volunteer_start_time': volunteer_times[0],
-                    'volunteer_end_time': volunteer_times[2],
-                    'region': region,
-                    'agency': agency
+                    '내용': content,
+                    '모집 시작 날짜': recruiting_dates[0],
+                    '모집 종료 날짜': recruiting_dates[2],
+                    '봉사 시작 날짜': volunteer_dates[0],
+                    '봉사 종료 날짜': volunteer_dates[2],
+                    '봉사 시작 시간': volunteer_times[0],
+                    '봉사 종료 시간': volunteer_times[2],
+                    '지역': region,
+                    '기관': agency
                 })
             except ValueError as e:
                 print(f"Error processing data: {e}")
-
         # 다음 페이지로 이동
         try:
             # 현재 페이지 번호를 확인
@@ -72,16 +109,16 @@ def crawl_1365_with_selenium():
             time.sleep(2)  # 페이지 로딩 시간을 고려하여 잠시 대기
 
         except Exception as e:
-            print(f"No more pages to load: {e}")
+            print(f"페이지 끝 또는 에러: {e}")
             break  # 더 이상 이동할 페이지가 없으면 중지
 
-    # 데이터프레임 생성
-    df = pd.DataFrame(all_data)
-    df.to_excel("all_volunteer_info.xlsx", index=False)
-    print(df.head())
-
+    # 데이터프레임 생성 -- pandas data set
+    data_frame = pd.DataFrame(all_data)
+    data_frame.to_excel("1365.xlsx", index=False)
     driver.quit()
 
+    #DB업로드
+    upload_db(all_data)
 
 if __name__ == '__main__':
-    crawl_1365_with_selenium()
+    crawling_1365()
