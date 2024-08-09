@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,44 +19,40 @@
 
 <div class="container-fluid full-height">
     <div class="center-box">
-        <form>
+        <form action="Process/process_sign_up1.jsp" method="post">
             <div class="mb-3 form-inline">
                 <label for="name" class="form-label">이름</label>
-                <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
+                <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요">
             </div>
             <div class="mb-3 form-inline">
                 <label for="age" class="form-label">나이</label>
-                <input type="text" class="form-control" id="age" placeholder="나이를 입력하세요">
+                <input type="text" class="form-control" id="age" name="age" placeholder="나이를 입력하세요">
             </div>
             <div class="mb-3 form-inline">
                 <label for="gender" class="form-label">성별</label>
-                <select class="form-select" id="gender">
+                <select class="form-select" id="gender" name="gender">
                     <option value="male">남성</option>
                     <option value="female">여성</option>
                 </select>
             </div>
             <div class="mb-3 form-inline">
                 <label for="where" class="form-label">사는 곳</label>
-                <input type="text" class="form-control" id="where" placeholder="사는 곳을 입력하세요">
+                <input type="text" class="form-control" id="where" name="residence" placeholder="사는 곳을 입력하세요">
             </div>
             <div class="mb-3 form-inline">
                 <label for="phoneNumber" class="form-label">전화번호</label>
-                <input type="text" class="form-control" id="phoneNumber" placeholder="전화번호를 입력하세요">
+                <input type="text" class="form-control" id="phoneNumber" name="tel" placeholder="전화번호를 입력하세요">
             </div>
             <div class="mb-3 form-inline">
                 <label for="eMail" class="form-label">이메일</label>
-                <input type="text" class="form-control" id="eMail" placeholder="이메일 입력하세요">
-            </div>
-            <div class="mb-3 form-inline">
-                <label for="username" class="form-label">아이디</label>
-                <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요">
+                <input type="text" class="form-control" id="eMail" name="mail" placeholder="이메일 입력하세요">
             </div>
             <div class="mb-3 form-inline">
                 <label for="password" class="form-label">비밀번호</label>
-                <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
+                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요">
             </div>
             <div class="mt-3">
-                <button type="button" class="btn btn-light" onclick="location.href='./sign_up2.jsp'">다음</button>
+                <button type="submit" class="btn btn-light">다음</button>
             </div>
         </form>
     </div>

@@ -18,7 +18,7 @@
         <form>
             <div class="login">기존 회원 로그인</div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">아이디</span>
+                <span class="input-group-text" id="basic-addon1">전화번호</span>
                 <input type="text" class="form-control" id="identify" placeholder="아이디를 입력하세요">
             </div>
             <div class="input-group mb-3">

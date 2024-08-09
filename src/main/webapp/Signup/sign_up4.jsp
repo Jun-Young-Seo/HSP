@@ -1,4 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="SignUp.Career"%>
+<%@ page import="SignUp.Education" %>
+<%@ page import="SignUp.SignUp"%>
+
+<%
+    //test code
+
+    SignUp s = (SignUp) session.getAttribute("signUp");
+    Education e = (Education) session.getAttribute("education");
+
+    System.out.println("e : "+e);
+    System.out.println("s : "+s);
+    int i =0;
+    while(session.getAttribute("career_"+i)!=null){
+        Career c = (Career)session.getAttribute("career_"+i);
+        System.out.println("c_"+i+" : "+c);
+        i++;
+
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,16 +39,17 @@
 <div class="container-fluid full-height">
     <div class="center-box">
         <p>장애유무를 선택해주세요</p>
-        <form>
+        <form action="Process/process_sign_up4.jsp" method="post">
             <div class="form-group">
                 <p>장애유무</p>
-                <select class="form-select" id="obstacle">
-                    <option value="obstacleYes">있음</option>
-                    <option value="obstacleNo">없음</option>
+                <select class="form-select" id="obstacle" name="handicap">
+                    <option value="yes">있음</option>
+                    <option value="no">없음</option>
                 </select>
             </div>
+            <textarea class="styled-textarea" placeholder="그 외의 사항에 대해 자유롭게 입력해주세요." name="description"></textarea>
             <div class="mt-3">
-                <button type="button" class="btn btn-light" onclick="location.href='signup5.jsp'">다음</button>
+                <button type="submit" class="btn btn-light">다음</button>
             </div>
         </form>
     </div>

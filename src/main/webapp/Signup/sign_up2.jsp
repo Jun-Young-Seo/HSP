@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page import="SignUp.SignUp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +19,10 @@
 <div class="container-fluid full-height">
     <div class="center-box">
         <div class="title-school">학력정보를 입력해주세요</div>
-        <form>
+        <form action="Process/process_sign_up2.jsp" method="post">
             <div class="form-group">
                 <p>최종학력</p>
-                <select class="form-select" id="school">
+                <select class="form-select" id="school" name="level">
                     <option value="elementarySchool">초등학교</option>
                     <option value="middleSchool">중학교</option>
                     <option value="highSchool">고등학교</option>
@@ -32,7 +33,7 @@
             </div>
             <div class="form-group">
                 <p>상태</p>
-                <select class="form-select" id="status">
+                <select class="form-select" id="status" name="state">
                     <option value="graduate">졸업</option>
                     <option value="attending">재학</option>
                     <option value="leaveOfAbsence">휴학</option>
@@ -41,7 +42,7 @@
                 </select>
             </div>
             <div class="mt-3">
-                <button type="button" class="btn btn-light" onclick="location.href='sign_up3.jsp'">다음</button>
+                <button type="submit" class="btn btn-light">다음</button>
             </div>
         </form>
     </div>
