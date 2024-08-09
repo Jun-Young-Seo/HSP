@@ -1,0 +1,96 @@
+.center-box {
+    background-color: #CEEEA5;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    color: white;
+}
+.full-height {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+.form-inline label {
+    margin-right: 10px;
+    white-space: nowrap;
+}
+.form-inline .form-control {
+    flex: 1;
+}
+.form-inline .btn {
+    flex-shrink: 0;
+}
+/* 기본 텍스트 박스 스타일 */
+.form-inline {
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 인풋 필드 스타일 */
+.form-inline .form-control, .form-inline .form-select {
+    flex: 1;
+    margin-left: 10px; /* 좌측 여백 */
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+/* 라벨 스타일 */
+.form-inline .form-label {
+    width: 100px; /* 라벨의 고정 너비 설정 */
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+
+
+/* 텍스트 스타일 */
+p{
+    color: black;
+    font-size: 20px; /* 폰트 크기 조정 */
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.title-school{
+    color:black;
+    text-align: center;
+    font-size:24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+/* 입력 필드 스타일 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-select {
+    width: 50%; /* 입력 필드 너비 조정 */
+    margin-top: 10px; /* 입력 필드 상단 여백 */
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+.exp {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+

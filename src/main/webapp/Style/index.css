@@ -1,0 +1,66 @@
+.center-box {
+    background-color: #CEEEA5;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    color: white;
+}
+.login {
+    color:#2E7028;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.signup{
+    color:#2E7028;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.btn-light{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.description{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.input-group-text{
+    color:#2E7028;
+    font-weight:bold;
+
+
+}
+.title-school{
+    display: flex;
+    color: black;
+    font-size: 20px;
+}
+.full-height {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+.form-inline label {
+    margin-right: 10px;
+    white-space: nowrap;
+}
+.form-inline .form-control {
+    flex: 1;
+}
+.form-inline .btn {
+    flex-shrink: 0;
+}
