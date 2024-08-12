@@ -1,6 +1,6 @@
 package SignUp;
 
-public class SignUp {
+public class Basic {
     private String name;
     private int age;
     private String tel;
@@ -8,7 +8,7 @@ public class SignUp {
     private String residence;
     private String mail;
     private String password;
-    public SignUp() {
+    public Basic() {
         this.name = null;
         this.age = -1;
         this.tel = null;

@@ -1,7 +1,5 @@
-<%@ page import="SignUp.SignUp" %>
-<%@ page import="SignUp.Handicap" %>
-<%@ page import="SignUp.Career" %>
-<%@ page import="SignUp.Education" %>
+<%@ page import="SignUp.Basic" %>
+<%@ page import="SignUp.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../../db_connection.jsp" %>
 <%
@@ -10,7 +8,7 @@
 
     try {
         // 기본 회원 정보
-        SignUp s = (SignUp) session.getAttribute("signUp");
+        Basic s = (Basic) session.getAttribute("basic");
         String name = s.getName();
         int age = s.getAge();
         String gender = s.getGender();
@@ -53,21 +51,18 @@
         }
 
         // 경력 정보
-        int i = 0;
-        Career c;
-        String sessionName;
-        while ((c = (Career) session.getAttribute("career_" + i)) != null) {
+        Career c = (Career) session.getAttribute("career");
+        if (c != null) {
             String company = c.getCompany();
             String workStart = c.getWorkStart();
             String workEnd = c.getWorkEnd();
             String sqlQueryCareer = "INSERT INTO USER_CAREER(ID, COMPANY, WORK_START, WORK_END) VALUES(?, ?, ?, ?)";
-            pstmt = connection.prepareStatement(sqlQueryCareer);
-            pstmt.setInt(1, userId);
-            pstmt.setString(2, company);
-            pstmt.setString(3, workStart);
-            pstmt.setString(4, workEnd);
+            pstmt=connection.prepareStatement(sqlQueryCareer);
+            pstmt.setInt(1,userId);
+            pstmt.setString(2,company);
+            pstmt.setString(3,workStart);
+            pstmt.setString(4,workEnd);
             pstmt.executeUpdate();
-            i++;
         }
 
         // 장애 정보
@@ -81,6 +76,23 @@
             pstmt.setBoolean(2, isHandicapped);
             pstmt.setString(3, description);
             pstmt.executeUpdate();
+        }
+
+        //관심사 정보
+        Interest interest = new Interest();
+        interest.setInterests((String[]) session.getAttribute("interest"));
+
+        if(interest.getInterests() != null) {
+            for (int n = 0; n < interest.getInterests().length; n++) {
+                System.out.println("int "+n+" : "+interest.getInterests()[n]);
+
+                String inter = interest.getInterests()[n];
+                String sqlQueryInterest = "INSERT INTO USER_INTEREST(ID, INTEREST) VALUES(?,?)";
+                pstmt = connection.prepareStatement(sqlQueryInterest);
+                pstmt.setInt(1, userId);
+                pstmt.setString(2, inter);
+                pstmt.executeUpdate();
+            }
         }
 
         // DB 연결 종료
@@ -97,6 +109,5 @@
         if (pstmt != null) pstmt.close();
         if (rs != null) rs.close();
         if (connection != null) connection.close();
-        response.sendRedirect("../../index.jsp");
     }
 %>

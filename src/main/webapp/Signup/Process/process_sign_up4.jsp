@@ -14,5 +14,5 @@
     handicap.setIsHandicapped(isHandicapped);
 
     session.setAttribute("handicap", handicap);
-    response.sendRedirect("./db_upload_sign_up.jsp");
+    response.sendRedirect("../interest.jsp");
 %>
