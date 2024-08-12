@@ -1,0 +1,98 @@
+body {
+font-family: 'Arial', sans-serif;
+margin: 0;
+padding: 0;
+background-color: #E9F0EF;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 10px solid #4FB39A;
+    border-radius: 10px;
+    min-height: 700px;
+}
+.header {
+background-color: #4FB39A;
+padding: 20px;
+text-align: center;
+position: relative;
+}
+.header h1 {
+color: white;
+margin: 0;
+font-size: 36px;
+}
+.login-button {
+position: absolute;
+top: 20px;
+right: 20px;
+background-color: white;
+color: black;
+padding: 15px 30px;
+border-radius: 25px;
+
+border: none;
+cursor: pointer;
+font-weight: bold;
+}
+.menu {
+display: flex;
+justify-content: space-between;
+background-color: #E9F0EF;
+padding: 10px 0;
+margin-bottom: 20px;
+border-bottom: 5px solid #4FB39A;
+}
+.menu-item {
+flex: 1;
+text-align: center;
+font-size: 24px;
+font-weight: bold;
+color: #4FB39A;
+}
+.content {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+}
+.content-box {
+flex: 1;
+text-align: center;
+padding: 20px;
+background-color: white;
+border: 2px solid #E9F0EF;
+border-radius: 10px;
+margin: 0 10px;
+}
+.content-box h2 {
+font-size: 18px;
+color: #4FB39A;
+}
+.step-circle {
+background-color: #FFEBE8;
+color: #FF6B6B;
+width: 30px;
+height: 30px;
+display: inline-block;
+line-height: 30px;
+border-radius: 50%;
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+.footer {
+    text-align: right;
+    margin-top: 290px;
+    padding-bottom: 20px;
+}
+.footer-button {
+    background-color: #4FB39A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
