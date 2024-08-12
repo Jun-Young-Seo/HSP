@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page import="SignUp.Career"%>
 <%@ page import="SignUp.Education" %>
-<%@ page import="SignUp.SignUp"%>
+<%@ page import="SignUp.Basic"%>
 
 <%
     //test code
 
-    SignUp s = (SignUp) session.getAttribute("signUp");
+    Basic s = (Basic) session.getAttribute("basic");
     Education e = (Education) session.getAttribute("education");
 
     System.out.println("e : "+e);

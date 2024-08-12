@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ page import="SignUp.SignUp"%>
+<%@ page import="SignUp.Basic"%>
+<%
+    System.out.println(session.getAttribute("basic"));
+%>
 <!DOCTYPE html>
 <html>
 <head>

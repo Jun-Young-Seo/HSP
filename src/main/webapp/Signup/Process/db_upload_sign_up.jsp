@@ -1,8 +1,5 @@
-<%@ page import="SignUp.SignUp" %>
-<%@ page import="SignUp.Handicap" %>
-<%@ page import="SignUp.Career" %>
-<%@ page import="SignUp.Education" %>
-<%@ page import="SignUp.Interest" %>
+<%@ page import="SignUp.Basic" %>
+<%@ page import="SignUp.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../../db_connection.jsp" %>
 <%
@@ -11,7 +8,7 @@
 
     try {
         // 기본 회원 정보
-        SignUp s = (SignUp) session.getAttribute("signUp");
+        Basic s = (Basic) session.getAttribute("basic");
         String name = s.getName();
         int age = s.getAge();
         String gender = s.getGender();
