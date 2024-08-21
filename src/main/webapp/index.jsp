@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    response.sendRedirect("./Signup/sign_up_mascot1.jsp");
+    //Login 상태면 myPage
+    if(session.getAttribute("login")!=null){
+        response.sendRedirect("./MyPage/my_page.jsp");
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -23,15 +26,15 @@
 
 <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
     <div class="center-box text-center">
-        <form>
+        <form action="./process_login.jsp" method="post">
             <div class="login">기존 회원 로그인</div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">전화번호</span>
-                <input type="text" class="form-control" id="identify" placeholder="아이디를 입력하세요">
+                <span class="input-group-text"  id="basic-addon1">전화번호</span>
+                <input type="text" class="form-control" name = "tel" id="identify" placeholder="아이디를 입력하세요">
             </div>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon2">비밀번호</span>
-                <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
+                <span class="input-group-text"  id="basic-addon2">비밀번호</span>
+                <input type="password" class="form-control" name = "password" id="password" placeholder="비밀번호를 입력하세요">
             </div>
             <div class="mt-3">
                 <div class="mb-3">
@@ -49,7 +52,7 @@
             약 30분이 소요됩니다.
         </div>
         <div class="mb-3">
-        <button type="button" class="btn btn-light mx-auto" onclick="location.href='./Signup/sign_up1.jsp'">시작</button>
+        <button type="button" class="btn btn-light mx-auto" onclick="location.href='./Signup/sign_up_mascot1.jsp'">시작</button>
         </div>
     </div>
 </div>
