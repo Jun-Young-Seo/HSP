@@ -1,0 +1,56 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #CEEEA5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.activity-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.activity-box {
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    border: 2px solid black;
+}
+
+.activity-box.selected {
+    background-color: #9FB87D;
+    transform: scale(1.1);
+}
+
+.activity-box img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.activity-box span {
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+
+.activity-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
