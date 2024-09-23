@@ -33,22 +33,22 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .input-field {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 2px solid #b8e994;
-            border-radius: 25px;
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            border: 1px solid #b8e994;
+            border-radius: 5px;
             background-color: #ccf5d3;
-            font-size: 1.5rem;
-            text-align: center;
-            color: #666;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            color: #333;
+            transition: background-color 0.3s;
         }
 
-        .input-field::placeholder {
-            color: #666;
-            font-weight: bold;
+        .btn.selected {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
         }
 
         .submit-button {
@@ -67,19 +67,40 @@
             background-color: #45a049;
         }
 
+        .progress-container {
+            margin-bottom: 20px;
+        }
+
+        .progress-label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
     </style>
     <script>
-        function checkInput() {
-            const phoneNumberField = document.getElementById('address'); // phoneNumber ID로 변경
+        function setupButtons() {
+            const buttons = document.querySelectorAll('.btn');
             const submitButton = document.getElementById('submit-button');
+            const hiddenInput = document.getElementById('selected-district');
 
-            // 입력 필드가 비어있지 않으면 버튼 표시, 비어있으면 버튼 숨김
-            if (phoneNumberField.value.trim() !== "") {
-                submitButton.style.display = "block";
-            } else {
-                submitButton.style.display = "none";
-            }
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // 모든 버튼의 'selected' 클래스를 제거
+                    buttons.forEach(btn => btn.classList.remove('selected'));
+
+                    // 클릭한 버튼에 'selected' 클래스 추가
+                    button.classList.add('selected');
+
+                    // 숨겨진 input에 선택한 값 설정
+                    hiddenInput.value = button.value;
+
+                    // '다음' 버튼 표시
+                    submitButton.style.display = 'block';
+                });
+            });
         }
+
+        window.onload = setupButtons;
     </script>
 </head>
 <body>
@@ -88,19 +109,48 @@
     <div class="speech-bubble">주소를<br>알려주세요</div>
 
     <form action="Process/process_sign_up_mascot5.jsp" method="post">
-        <input type="text" class="input-field" id="address" name="address" placeholder="주소" oninput="checkInput()">
+        <!-- 구 선택 버튼들 -->
+        <div class="selection-box">
+            <input type="button" class="btn" value="강남구">
+            <input type="button" class="btn" value="강동구">
+            <input type="button" class="btn" value="강북구">
+            <input type="button" class="btn" value="강서구">
+            <input type="button" class="btn" value="관악구">
+            <input type="button" class="btn" value="광진구">
+            <input type="button" class="btn" value="구로구">
+            <input type="button" class="btn" value="금천구">
+            <input type="button" class="btn" value="노원구">
+            <input type="button" class="btn" value="도봉구">
+            <input type="button" class="btn" value="동대문구">
+            <input type="button" class="btn" value="동작구">
+            <input type="button" class="btn" value="마포구">
+            <input type="button" class="btn" value="서대문구">
+            <input type="button" class="btn" value="서초구">
+            <input type="button" class="btn" value="성동구">
+            <input type="button" class="btn" value="성북구">
+            <input type="button" class="btn" value="송파구">
+            <input type="button" class="btn" value="양천구">
+            <input type="button" class="btn" value="영등포구">
+            <input type="button" class="btn" value="용산구">
+            <input type="button" class="btn" value="은평구">
+            <input type="button" class="btn" value="종로구">
+            <input type="button" class="btn" value="중구">
+            <input type="button" class="btn" value="중랑구">
+        </div>
+
+        <!-- 숨겨진 input 요소 -->
+        <input type="hidden" id="selected-district" name="selected-district">
 
         <!-- 진행 바 -->
         <div class="progress-container">
-            <div class="progress-label">6번째 중 5번째</div>
-            <br>
-            <div class="progress" id="progress-bar-container" style="background-color: #2E7028;">
-                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 83.3%; color: black; white-space: nowrap; overflow: visible; background-color: #CEEEA5;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-label">6단계 중 5단계</div>
+            <div class="progress" id="progress-bar-container">
+                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 83.3%; background-color: #CEEEA5;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
         </div>
-        <br>
 
+        <!-- 제출 버튼 -->
         <button type="submit" class="submit-button" id="submit-button">다음</button>
     </form>
 </div>
